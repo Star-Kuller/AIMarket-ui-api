@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">None</DebugType>
+    <RootNamespace>IAE.Microservice.Infrastructure</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\geocity.mmdb" />
+    <None Remove="Data\regexes.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\geocity.mmdb" />
+    <EmbeddedResource Include="Data\regexes.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.2.0" />
+    <PackageReference Include="MaxMind.GeoIP2" Version="3.0.0" />
+    <PackageReference Include="UAParser.FormFactor" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IAE.Microservice.Application\IAE.Microservice.Application.csproj" />
+  </ItemGroup>
+
+</Project>

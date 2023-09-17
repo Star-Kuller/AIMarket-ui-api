@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentAssertions" Version="5.8.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+        <PackageReference Include="Moq" Version="4.12.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+        <PackageReference Include="NUnit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.14.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\IAE.Microservice.Persistence\IAE.Microservice.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\IAE.Microservice.Persistence\Ffprobe\ffprobe-3.3.4-win-64.zip">
+          <Link>ffprobe-3.3.4-win-64.zip</Link>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="appsettings.json">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Features\SystemTimeContextTest.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Features\Accounts\" />
+    </ItemGroup>
+    
+    <Choose>
+        <When Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+            <Choose>
+                <When Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+                    <ItemGroup>
+                        <Content Include="..\IAE.Microservice.Persistence\Ffprobe\*linux*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </When>
+                <Otherwise>
+                    <ItemGroup>
+                        <Content Include="..\IAE.Microservice.Persistence\Ffprobe\*win*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </Otherwise>
+            </Choose>
+        </When>
+        <When Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+            <Choose>
+                <When Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+                    <ItemGroup>
+                        <Content Include="..\IAE.Microservice.Persistence\Ffprobe\*win*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </When>
+                <Otherwise>
+                    <ItemGroup>
+                        <Content Include="..\IAE.Microservice.Persistence\Ffprobe\*linux*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </Otherwise>
+            </Choose>
+        </When>
+    </Choose>
+
+</Project>

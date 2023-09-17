@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+        <RootNamespace>IAE.Microservice.Api</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DebugType>None</DebugType>
+        <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="9.0.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.1" />
+        <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
+        <PackageReference Include="MediatR" Version="7.0.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.0.0" />
+        <PackageReference Include="NSwag.AspNetCore" Version="13.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.21" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\IAE.Microservice.Application\IAE.Microservice.Application.csproj" />
+        <ProjectReference Include="..\IAE.Microservice.Infrastructure\IAE.Microservice.Infrastructure.csproj" />
+        <ProjectReference Include="..\IAE.Microservice.Persistence\IAE.Microservice.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\IAE.Microservice.Persistence\Ffprobe\ffprobe-3.3.4-win-64.zip">
+        <Link>ffprobe-3.3.4-win-64.zip</Link>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <Choose>
+        <When Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+            <Choose>
+                <When Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
+                    <ItemGroup>
+                        <Content Include="..\IAE.TradingDesk.Persistence\Ffprobe\*linux*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </When>
+                <Otherwise>
+                    <ItemGroup>
+                        <Content Include="..\IAE.TradingDesk.Persistence\Ffprobe\*win*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </Otherwise>
+            </Choose>
+        </When>
+        <When Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+            <Choose>
+                <When Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+                    <ItemGroup>
+                        <Content Include="..\IAE.TradingDesk.Persistence\Ffprobe\*win*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </When>
+                <Otherwise>
+                    <ItemGroup>
+                        <Content Include="..\IAE.TradingDesk.Persistence\Ffprobe\*linux*64.zip" Link="ffprobe.zip" CopyToOutputDirectory="PreserveNewest">
+                        </Content>
+                    </ItemGroup>
+                </Otherwise>
+            </Choose>
+        </When>
+    </Choose>
+
+</Project>
