@@ -52,7 +52,7 @@ namespace IAE.Microservice.Api
 
                 try
                 {
-                    await Scheduler.ResetSchedulerAsync(services.GetRequiredService<TradingDeskDbContext>());
+                    await Scheduler.ResetSchedulerAsync(services.GetRequiredService<MicroserviceDbContext>());
                 }
                 catch (Exception ex)
                 {

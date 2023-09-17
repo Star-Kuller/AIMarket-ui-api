@@ -7,22 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="SeedData\browsers.json" />
-    <EmbeddedResource Include="SeedData\carriers.json" />
-    <EmbeddedResource Include="SeedData\categories.json" />
-    <EmbeddedResource Include="SeedData\countries.json" />
-    <EmbeddedResource Include="SeedData\designated_market_areas.json" />
-    <EmbeddedResource Include="SeedData\devices.json" />
-    <EmbeddedResource Include="SeedData\geos.json" />
-    <EmbeddedResource Include="SeedData\languages.json" />
-    <EmbeddedResource Include="SeedData\manufacturers.json" />
-    <EmbeddedResource Include="SeedData\operating_systems.json" />
-    <EmbeddedResource Include="SeedData\positions.json" />
-    <EmbeddedResource Include="SeedData\timezones.json" />
-    <EmbeddedResource Include="SeedData\zip_codes.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Inflector.NetCore" Version="1.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12">

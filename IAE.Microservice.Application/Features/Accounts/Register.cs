@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using IAE.Microservice.Application.Extensions;
-using IAE.Microservice.Application.Interfaces.Bidder;
 using IAE.Microservice.Application.Validators;
 using IAE.Microservice.Domain.Entities.Users;
 using MediatR;
@@ -52,13 +51,13 @@ namespace IAE.Microservice.Application.Features.Accounts
         public class Handler : IRequestHandler<Command, long>
         {
             private readonly UserManager<User> _userManager;
-            private readonly ITradingDeskDbContext _context;
+            private readonly IMicriserviceDbContext _context;
             private readonly IMediator _mediator;
             private readonly IMapper _mapper;
             private readonly ILogger<Handler> _logger;
 
             public Handler(
-                UserManager<User> userManager, ITradingDeskDbContext context,
+                UserManager<User> userManager, IMicriserviceDbContext context,
                 IMediator mediator, IMapper mapper, ILogger<Handler> logger
             )
             {

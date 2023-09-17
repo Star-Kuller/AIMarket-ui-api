@@ -15,22 +15,17 @@ namespace IAE.Microservice.Persistence
 {
     public static class DatabaseInitializer
     {
-        private static UserCountry _defaultUserCountry = new UserCountry
-        {
-            CountryId = 183, // Russia
-            TimezoneId = 234 // Europe/Moscow
-        };
 
         public static async Task InitializeAsync(IServiceProvider services)
         {
-            var context = services.GetRequiredService<TradingDeskDbContext>();
+            var context = services.GetRequiredService<MicroserviceDbContext>();
             await context.Database.MigrateAsync();
 
             await SeedDatabaseDataAsync(context, services);
         }
 
         private static async Task SeedDatabaseDataAsync(
-            TradingDeskDbContext context, IServiceProvider services)
+            MicroserviceDbContext context, IServiceProvider services)
         {
             var adminUserSettings = services.GetService<IOptions<AdminUser>>().Value;
 
@@ -128,11 +123,5 @@ namespace IAE.Microservice.Persistence
             }
         }
 
-    }
-
-    public class UserCountry
-    {
-        public long CountryId { get; set; }
-        public long TimezoneId { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using IAE.Microservice.Application.Extensions;
-using IAE.Microservice.Application.Interfaces.Bidder;
 using IAE.Microservice.Application.Validators;
 using IAE.Microservice.Domain.Entities.Common;
 using IAE.Microservice.Domain.Entities.Users;
@@ -38,11 +37,11 @@ namespace IAE.Microservice.Application.Features.Users
 
         public class Handler : IRequestHandler<Command, Unit>
         {
-            private readonly ITradingDeskDbContext _context;
+            private readonly IMicriserviceDbContext _context;
             private readonly ICurrentUser _currentUser;
             private readonly ILogger<Handler> _logger;
 
-            public Handler(ITradingDeskDbContext context, ICurrentUser currentUser,
+            public Handler(IMicriserviceDbContext context, ICurrentUser currentUser,
                 ILogger<Handler> logger)
             {
                 _context = context;

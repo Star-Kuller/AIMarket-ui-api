@@ -13,13 +13,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace IAE.Microservice.Persistence
 {
-    public class TradingDeskDbContext : IdentityDbContext<
+    public class MicroserviceDbContext : IdentityDbContext<
         User, Role, long,
         UserClaim, UserRole, UserLogin,
-        RoleClaim, UserToken>, ITradingDeskDbContext
+        RoleClaim, UserToken>, IMicriserviceDbContext
     {
 
-        public TradingDeskDbContext(DbContextOptions options) : base(options)
+        public MicroserviceDbContext(DbContextOptions options) : base(options)
         {
         }
 
@@ -30,7 +30,7 @@ namespace IAE.Microservice.Persistence
             SetupColumnNames(modelBuilder);
             SetupUtcDateTimes(modelBuilder);
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TradingDeskDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MicroserviceDbContext).Assembly);
             if (!Database.IsNpgsql())
             {
             }

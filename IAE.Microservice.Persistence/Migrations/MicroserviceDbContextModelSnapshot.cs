@@ -8,8 +8,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace IAE.Microservice.Persistence.Migrations
 {
-    [DbContext(typeof(TradingDeskDbContext))]
-    partial class TradingDeskDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MicroserviceDbContext))]
+    partial class MicroserviceDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

@@ -9,12 +9,12 @@ namespace IAE.Microservice.Application.Tests.Infrastructure
 {
     public class TradingDeskContextFactory
     {
-        public static TradingDeskDbContext Create()
+        public static MicroserviceDbContext Create()
         {
             return CreateInNpgsqlDatabase(TestsConfiguration.GetConnectionString());
         }
 
-        public static void Destroy(TradingDeskDbContext context)
+        public static void Destroy(MicroserviceDbContext context)
         {
             context.Database.EnsureDeleted();
             context.Dispose();
@@ -34,7 +34,7 @@ namespace IAE.Microservice.Application.Tests.Infrastructure
             }
         }
 
-        private static TradingDeskDbContext CreateInNpgsqlDatabase(string connectionString)
+        private static MicroserviceDbContext CreateInNpgsqlDatabase(string connectionString)
         {
             var databaseName = $"TD-TEST-{NUnit.Framework.TestContext.CurrentContext.Test.MethodName}-" +
                                $"{DateTime.UtcNow.Ticks}";
@@ -61,7 +61,7 @@ namespace IAE.Microservice.Application.Tests.Infrastructure
             optionsBuilder.UseNpgsql(connectionStringBuilder.ConnectionString);
             optionsBuilder.EnableSensitiveDataLogging();
 
-            return new TradingDeskDbContext(optionsBuilder.Options);
+            return new MicroserviceDbContext(optionsBuilder.Options);
         }
     }
 }

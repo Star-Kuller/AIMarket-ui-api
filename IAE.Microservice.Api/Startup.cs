@@ -89,9 +89,9 @@ namespace IAE.Microservice.Api
 
             // Add DbContext using Postgres Provider
             services.Configure<AdminUser>(Configuration.GetSection("AdminUser"));
-            services.AddDbContext<TradingDeskDbContext>(options =>
+            services.AddDbContext<MicroserviceDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("TradingDeskDatabase")));
-            services.AddTransient<ITradingDeskDbContext, TradingDeskDbContext>();
+            services.AddTransient<IMicriserviceDbContext, MicroserviceDbContext>();
 
             services.Configure<DataProtectionTokenProviderOptions>(x => x.TokenLifespan = TimeSpan.FromDays(30));
             services.AddIdentity<User, Role>(options =>
@@ -107,7 +107,7 @@ namespace IAE.Microservice.Api
                     options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
                     options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultEmailProvider;
                 })
-                .AddEntityFrameworkStores<TradingDeskDbContext>()
+                .AddEntityFrameworkStores<MicroserviceDbContext>()
                 .AddDefaultTokenProviders();
 
             var policy = new AuthorizationPolicyBuilder()

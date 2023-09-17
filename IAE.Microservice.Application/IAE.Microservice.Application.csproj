@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Bidder\Models\" />
+    <Folder Include="Interfaces\Social\Models\" />
   </ItemGroup>
 
 </Project>

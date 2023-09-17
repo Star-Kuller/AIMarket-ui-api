@@ -1,18 +1,21 @@
-﻿using IAE.Microservice.Api.Security;
-using IAE.Microservice.Application.Common;
+﻿using System.Threading.Tasks;
 using IAE.Microservice.Application.Features.Users;
+using IAE.Microservice.Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using IAE.Microservice.Domain.Entities.Users;
 
-namespace IAE.Microservice.Api.Controllers.Users
+namespace IAE.Microservice.Api.Controllers
 {
     [ApiController]
     [Route("users")]
     public class UsersController : BaseController
     {
+        
+        /// <summary>
+        /// Изменить статус пользователя
+        /// </summary>
+        /// <param name="id">id пользователя</param>
         [HttpPut("{id}/status")]
         [Authorize(Roles = Role.Administrator)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -27,6 +30,10 @@ namespace IAE.Microservice.Api.Controllers.Users
             return NoContent();
         }
 
+        /// <summary>
+        /// Подтвердить почту пользователя
+        /// </summary>
+        /// <param name="id">id пользователь</param>
         [HttpPut("{id}/email_confirmed")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesDefaultResponseType]

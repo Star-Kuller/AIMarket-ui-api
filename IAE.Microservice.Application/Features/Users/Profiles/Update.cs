@@ -41,11 +41,11 @@ namespace IAE.Microservice.Application.Features.Users.Profiles
 
         public class Handler : IRequestHandler<Command, Unit>
         {
-            private readonly ITradingDeskDbContext _context;
+            private readonly IMicriserviceDbContext _context;
             private readonly IMapper _mapper;
             private readonly ICurrentUser _currentUser;
 
-            public Handler(ITradingDeskDbContext context, IMapper mapper, ICurrentUser currentUser)
+            public Handler(IMicriserviceDbContext context, IMapper mapper, ICurrentUser currentUser)
             {
                 _context = context;
                 _mapper = mapper;

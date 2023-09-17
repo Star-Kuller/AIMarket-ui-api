@@ -187,7 +187,7 @@ namespace IAE.Microservice.Application.Features.Accounts.Notifications
         private static string GetAbbreviationName(NotificationManagement management)
         {
             var abbrName = management?.AbbreviationName;
-            return string.IsNullOrWhiteSpace(abbrName) ? "DSP" : abbrName;
+            return string.IsNullOrWhiteSpace(abbrName) ? "Microservice" : abbrName;
         }
         
         private static string GetUserMacrosValue(User user)

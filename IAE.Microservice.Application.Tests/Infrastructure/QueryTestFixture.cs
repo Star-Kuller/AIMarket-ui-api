@@ -12,7 +12,7 @@ namespace IAE.Microservice.Application.Tests.Infrastructure
 {
     public class QueryTestFixture : IDisposable
     {
-        public TradingDeskDbContext Context { get; }
+        public MicroserviceDbContext Context { get; }
         public IMapper Mapper { get; }
         public UserManager<User> UserManager { get; }
         public Mock<UserManager<User>> UserManagerMock { get; }

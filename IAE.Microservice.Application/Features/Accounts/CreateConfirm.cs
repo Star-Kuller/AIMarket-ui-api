@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using IAE.Microservice.Application.Extensions;
-using IAE.Microservice.Application.Interfaces.Bidder;
 using IAE.Microservice.Application.Validators;
 using IAE.Microservice.Domain.Entities.Common;
 using IAE.Microservice.Domain.Entities.Users;

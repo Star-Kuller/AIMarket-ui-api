@@ -7,7 +7,7 @@ namespace IAE.Microservice.Application.Tests.Infrastructure
 {
     public sealed class TradingDeskContextTemplate : IDisposable
     {
-        private readonly TradingDeskDbContext _context;
+        private readonly MicroserviceDbContext _context;
         private static TradingDeskContextTemplate _instance;
 
         private TradingDeskContextTemplate(string connectionString)
@@ -21,7 +21,7 @@ namespace IAE.Microservice.Application.Tests.Infrastructure
             var optionsBuilder = new DbContextOptionsBuilder();
             optionsBuilder.UseNpgsql(connectionStringBuilder.ConnectionString);
 
-            _context = new TradingDeskDbContext(optionsBuilder.Options);
+            _context = new MicroserviceDbContext(optionsBuilder.Options);
             _context.Database.EnsureCreated();
 
             AppDomain.CurrentDomain.ProcessExit += Destroy;

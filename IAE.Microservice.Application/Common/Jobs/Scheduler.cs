@@ -22,7 +22,7 @@ namespace IAE.Microservice.Application.Common.Jobs
             app.UseHangfireDashboard();
         }
 
-        public static async Task ResetSchedulerAsync(ITradingDeskDbContext context)
+        public static async Task ResetSchedulerAsync(IMicriserviceDbContext context)
         {
 
             await context.SaveChangesAsync(CancellationToken.None);

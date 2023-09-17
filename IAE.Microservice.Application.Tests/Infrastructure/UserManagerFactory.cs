@@ -11,10 +11,10 @@ namespace IAE.Microservice.Application.Tests.Infrastructure
 {
     public static class UserManagerFactory
     {
-        public static UserManager<User> Create(TradingDeskDbContext dbContext)
+        public static UserManager<User> Create(MicroserviceDbContext dbContext)
         {
             var userStore = new UserStore<
-                User, Role, TradingDeskDbContext, long,
+                User, Role, MicroserviceDbContext, long,
                 UserClaim, UserRole, UserLogin, UserToken, RoleClaim>(dbContext);
             var passwordHasher = new PasswordHasher<User>();
             var userValidators = new List<UserValidator<User>> { new UserValidator<User>() };

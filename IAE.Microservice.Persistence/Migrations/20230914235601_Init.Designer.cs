@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace IAE.Microservice.Persistence.Migrations
 {
-    [DbContext(typeof(TradingDeskDbContext))]
+    [DbContext(typeof(MicroserviceDbContext))]
     [Migration("20230914235601_Init")]
     partial class Init
     {

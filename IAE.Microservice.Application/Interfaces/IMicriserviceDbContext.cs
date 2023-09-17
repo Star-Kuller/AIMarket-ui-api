@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IAE.Microservice.Application.Interfaces
 {
-    public interface ITradingDeskDbContext
+    public interface IMicriserviceDbContext
     {
         DbSet<User> Users { get; }
 
