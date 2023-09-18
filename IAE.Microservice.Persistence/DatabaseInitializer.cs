@@ -67,8 +67,7 @@ namespace IAE.Microservice.Persistence
 
             // update existing user
 
-            adminUser.FirstName = adminUserSettings.FirstName;
-            adminUser.LastName = adminUserSettings.LastName;
+            adminUser.Name = adminUserSettings.FirstName;
             adminUser.Email = adminUserSettings.Email;
             adminUser.UserName = adminUserSettings.Email;
             adminUser.Language = adminUserSettings.UserLanguage;
@@ -83,8 +82,7 @@ namespace IAE.Microservice.Persistence
         {
             var user = new User
             {
-                FirstName = adminUserSettings.FirstName,
-                LastName = adminUserSettings.LastName,
+                Name = adminUserSettings.FirstName,
                 Email = adminUserSettings.Email,
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,

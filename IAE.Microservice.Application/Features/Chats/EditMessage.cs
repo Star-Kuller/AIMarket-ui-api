@@ -7,12 +7,17 @@ using Microsoft.Extensions.Logging;
 
 namespace IAE.Microservice.Application.Features.Chats
 {
-    public class Send
+    public class EditMessage
     {
-        public class Command : IRequest<long>
+        public class Command : IRequest<Response>
         {
-            public long ChatId { get; set; }
+            public long MessageId { get; set; }
             public string Message { get; set; }
+        }
+        
+        public class Response : IRequest<Response>
+        {
+            public long Id { get; set; }
         }
 
         public class Validator : AbstractValidator<Command>
@@ -22,7 +27,7 @@ namespace IAE.Microservice.Application.Features.Chats
             }
         }
 
-        public class Handler : IRequestHandler<Command, long>
+        public class Handler : IRequestHandler<Command, Response>
         {
             private readonly IMicriserviceDbContext _context;
             private readonly ICurrentUser _currentUser;
@@ -36,9 +41,9 @@ namespace IAE.Microservice.Application.Features.Chats
                 _logger = logger;
             }
 
-            public async Task<long> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Response> Handle(Command request, CancellationToken cancellationToken)
             {
-                return 0;
+                return new Response();
             }
         }
     }

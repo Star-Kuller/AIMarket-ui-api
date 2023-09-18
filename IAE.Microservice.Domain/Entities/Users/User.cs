@@ -12,11 +12,9 @@ namespace IAE.Microservice.Domain.Entities.Users
     {
         
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        
-        public string Name => FirstName + " " + LastName;
-        
+        public string Name { get; set; }
+        public long SocialId { get; set; }
+
         public Language Language { get; set; }
         public Status Status { get; set; }
 

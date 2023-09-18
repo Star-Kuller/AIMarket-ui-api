@@ -3,15 +3,17 @@ using System;
 using IAE.Microservice.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace IAE.Microservice.Persistence.Migrations
 {
     [DbContext(typeof(MicroserviceDbContext))]
-    partial class MicroserviceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230918011534_Added-User-SocialId")]
+    partial class AddedUserSocialId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

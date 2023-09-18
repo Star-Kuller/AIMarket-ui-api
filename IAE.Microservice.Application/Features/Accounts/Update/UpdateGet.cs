@@ -48,8 +48,7 @@ namespace IAE.Microservice.Application.Features.Accounts.Update
                     Email = user.Email,
                     EmailConfirmed = user.EmailConfirmed,
                     Phone = user.PhoneNumber,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
+                    FirstName = user.Name,
                     Language = user.Language
                 };
                 var response = new Response

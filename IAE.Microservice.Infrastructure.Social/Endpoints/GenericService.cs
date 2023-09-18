@@ -1,8 +1,12 @@
-﻿using System.Net;
+﻿using System;
+using System.Linq;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using AutoMapper;
 using IAE.Microservice.Application.Common.Operation;
 using IAE.Microservice.Application.Interfaces.Social;
-using IAE.TradingDesk.Infrastructure.Bidder.Client;
+using IAE.Microservice.Infrastructure.Social.Client;
 
 namespace IAE.Microservice.Infrastructure.Social.Endpoints
 {

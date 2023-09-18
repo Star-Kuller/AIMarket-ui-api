@@ -47,7 +47,7 @@ namespace IAE.Microservice.Api.Controllers
         /// <param name="id">id чата</param>
         [HttpPost("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> SendMessage(long id, [FromBody] Send.Command command)
+        public async Task<IActionResult> SendMessage(long id, [FromBody] SendMessage.Command command)
         {
             return StatusCode(405, "В разработке");
         }
@@ -81,7 +81,7 @@ namespace IAE.Microservice.Api.Controllers
         /// <param name="id">id сообщения</param>
         [HttpPut("message/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> EditMessage(long id, [FromBody] Edit.Command command)
+        public async Task<IActionResult> EditMessage(long id, [FromBody] EditMessage.Command command)
         {
             command.MessageId = id;
             return StatusCode(405, "В разработке");

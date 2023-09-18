@@ -30,13 +30,17 @@ using IAE.Microservice.Api.Configurations;
 using IAE.Microservice.Api.Filters;
 using IAE.Microservice.Api.Infrastructure;
 using IAE.Microservice.Api.Security;
+using IAE.Microservice.Application.Common.HClient;
 using IAE.Microservice.Application.Common.Jobs;
 using IAE.Microservice.Application.Features.Accounts;
+using IAE.Microservice.Application.Interfaces.Social;
 using IAE.Microservice.Domain.Entities.Users;
 using IAE.Microservice.Infrastructure;
+using IAE.Microservice.Infrastructure.Social.Client;
 using IAE.Microservice.Persistence;
 using Microsoft.Extensions.Hosting;
 using NSwag.Generation.AspNetCore;
+using SocialMicroservice = IAE.Microservice.Infrastructure.Social;
 
 namespace IAE.Microservice.Api
 {
@@ -71,6 +75,17 @@ namespace IAE.Microservice.Api
             // Add RequestValidator
             services.AddTransient<RequestValidator.Middleware>();
 
+            // Add Social microservice
+            services.AddScoped<ISocialUserService, SocialMicroservice.Endpoints.Users.UserService>();
+            services.AddScoped<ISocialChatService, SocialMicroservice.Endpoints.Chats.ChatService>();
+            
+            // Add Social microservice HttpClient
+            var socialConfig = Configuration.GetSection("SocialMicroservice").Get<HClientConfig>();
+            services.AddHttpClient<ISocialClient, SocialClient>()
+                .AddHttpMessageHandler<RequestLogging.HttpClientMessageHandler>()
+                .Configure(socialConfig, headers => { headers.Add("X-Auth-Token", socialConfig.AdminToken); });
+
+            
             // Add framework services
             services.AddHttpContextAccessor();
             services.Configure<SmtpManagement>(Configuration.GetSection("SmtpManagement"));

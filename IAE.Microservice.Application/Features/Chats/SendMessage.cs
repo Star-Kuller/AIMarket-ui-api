@@ -7,11 +7,11 @@ using Microsoft.Extensions.Logging;
 
 namespace IAE.Microservice.Application.Features.Chats
 {
-    public class Edit
+    public class SendMessage
     {
         public class Command : IRequest<long>
         {
-            public long MessageId { get; set; }
+            public long ChatId { get; set; }
             public string Message { get; set; }
         }
 

@@ -18,11 +18,14 @@ namespace IAE.Microservice.Application.Features.Users.Profiles
     {
         public class Command : IRequest, IHaveCustomMapping
         {
+            public long Id { get; set; }
             public string Email { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
+            public string Name { get; set; }
             public string Phone { get; set; }
-            public Language Language { get; set; }
+            public string Gender { get; set; }
+            public string Age { get; set; }
+            public string About { get; set; }
+            public string[] Hobbies { get; set; }
 
             public void CreateMappings(Profile configuration)
             {
@@ -30,12 +33,17 @@ namespace IAE.Microservice.Application.Features.Users.Profiles
             }
         }
 
+        public class Response
+        {
+            public long Id { get; set; }
+        }
+
         public class Validator : AbstractValidator<Command>
         {
             public Validator()
             {
-                RuleFor(x => x.FirstName).NotEmpty().MaximumLength(255);
-                RuleFor(x => x.LastName).NotEmpty().MaximumLength(255);
+                RuleFor(x => x.Name).NotEmpty().MaximumLength(255);
+                RuleFor(x => x.Email).NotEmpty().EmailAddress();
             }
         }
 

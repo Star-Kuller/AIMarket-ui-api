@@ -10,11 +10,16 @@ namespace IAE.Microservice.Application.Features.Chats
 {
     public class Create
     {
-        public class Command : IRequest<long>
+        public class Command : IRequest<Response>
         {
             //TODO Сделать поддержку картинки чата (по готовности хранения картинок)
             public string Name { get; set; }
             public List<long> Participants { get; set; }
+        }
+        
+        public class Response : IRequest<Response>
+        {
+            public long Id { get; set; }
         }
 
         public class Validator : AbstractValidator<Command>
@@ -24,7 +29,7 @@ namespace IAE.Microservice.Application.Features.Chats
             }
         }
 
-        public class Handler : IRequestHandler<Command, long>
+        public class Handler : IRequestHandler<Command, Response>
         {
             private readonly IMicriserviceDbContext _context;
             private readonly ICurrentUser _currentUser;
@@ -38,9 +43,9 @@ namespace IAE.Microservice.Application.Features.Chats
                 _logger = logger;
             }
 
-            public async Task<long> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Response> Handle(Command request, CancellationToken cancellationToken)
             {
-                return 0;
+                return new Response();
             }
         }
     }

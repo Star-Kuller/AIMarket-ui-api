@@ -261,14 +261,14 @@ namespace IAE.Microservice.Application.Features.Accounts.Update
                     case UpdateKeys.FirstName:
                     {
                         var newValue = values.FirstName;
-                        var oldValue = user.FirstName;
+                        var oldValue = user.Name;
                         if (oldValue == newValue)
                         {
                             item.Change = ValuesEqual(newValue);
                             break;
                         }
 
-                        user.FirstName = newValue;
+                        user.Name = newValue;
                         var iResult = await _userManager.UpdateAsync(user);
                         if (iResult.Succeeded)
                         {
@@ -284,14 +284,14 @@ namespace IAE.Microservice.Application.Features.Accounts.Update
                     case UpdateKeys.LastName:
                     {
                         var newValue = values.LastName;
-                        var oldValue = user.LastName;
+                        var oldValue = user.Name;
                         if (oldValue == newValue)
                         {
                             item.Change = ValuesEqual(newValue);
                             break;
                         }
 
-                        user.LastName = newValue;
+                        user.Name = newValue;
                         var iResult = await _userManager.UpdateAsync(user);
                         if (iResult.Succeeded)
                         {

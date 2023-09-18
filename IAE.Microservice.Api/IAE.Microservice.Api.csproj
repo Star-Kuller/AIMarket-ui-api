@@ -31,6 +31,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\IAE.Microservice.Application\IAE.Microservice.Application.csproj" />
+        <ProjectReference Include="..\IAE.Microservice.Infrastructure.Social\IAE.Microservice.Infrastructure.Social.csproj" />
         <ProjectReference Include="..\IAE.Microservice.Infrastructure\IAE.Microservice.Infrastructure.csproj" />
         <ProjectReference Include="..\IAE.Microservice.Persistence\IAE.Microservice.Persistence.csproj" />
     </ItemGroup>

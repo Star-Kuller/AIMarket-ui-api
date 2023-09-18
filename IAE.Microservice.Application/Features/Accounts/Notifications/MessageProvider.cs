@@ -192,8 +192,8 @@ namespace IAE.Microservice.Application.Features.Accounts.Notifications
         
         private static string GetUserMacrosValue(User user)
         {
-            if (!string.IsNullOrWhiteSpace(user.FirstName))
-                return user.FirstName;
+            if (!string.IsNullOrWhiteSpace(user.Name))
+                return user.Name;
 
             return user.Language == Language.Russian
                 ? $"сотрудник агентства {user.Name}"

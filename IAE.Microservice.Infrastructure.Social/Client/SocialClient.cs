@@ -1,5 +1,5 @@
-﻿using IAE.Microservice.Application.Common.HClient;
-using IAE.TradingDesk.Infrastructure.Bidder.Client;
+﻿using System.Net.Http;
+using IAE.Microservice.Application.Common.HClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -9,7 +9,9 @@ namespace IAE.Microservice.Infrastructure.Social.Client
     {
         private static string GetPath(params string[] segments) => SetupPath(segments);
         
-
+        private const string ChatPath = "chat";
+        private const string MessagePath = "message"; 
+        private const string UserPath = "user";
         public SocialClient(HttpClient httpClient) : base(httpClient)
         {
         }

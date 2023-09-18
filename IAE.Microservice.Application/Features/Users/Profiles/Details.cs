@@ -20,11 +20,14 @@ namespace IAE.Microservice.Application.Features.Users.Profiles
 
         public class Model
         {
+            public long Id { get; set; }
             public string Email { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
+            public string Name { get; set; }
             public string Phone { get; set; }
-            public Language Language { get; set; }
+            public string Gender { get; set; }
+            public string Age { get; set; }
+            public string About { get; set; }
+            public string[] Hobbies { get; set; }
             
             public void CreateMappings(Profile configuration)
             {
